@@ -35,9 +35,17 @@ public class SinglyLinkedList {
         }
         return count;
     }
+
+    //Inserting the listnode at the starting of the list
+    public void insertFirst(int data){
+        ListNode newNode = new ListNode(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
-        singly.head = new ListNode(10);
+        /*singly.head = new ListNode(10);
         ListNode secondNode = new ListNode(1);
         ListNode thirdNode = new ListNode(8);
         ListNode fourthNode = new ListNode(15);
@@ -46,6 +54,15 @@ public class SinglyLinkedList {
         secondNode.next = thirdNode;
         thirdNode.next = fourthNode;
 
+        singly.display();
+        System.out.println("length of the List = "+ singly.length());*/
+
+        singly.insertFirst(10);
+        singly.insertFirst(1);
+        singly.insertFirst(8);
+        singly.insertFirst(15);
+
+        System.out.println("Inserting the List node at the beginning");
         singly.display();
         System.out.println("length of the List = "+ singly.length());
     }
