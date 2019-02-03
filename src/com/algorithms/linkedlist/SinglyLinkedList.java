@@ -43,6 +43,32 @@ public class SinglyLinkedList {
         head = newNode;
     }
 
+    //Inserting the node at the last of the List
+    public void insertLast(int data){
+        ListNode newNode = new ListNode(data);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        ListNode current = head;
+        while(current.next != null){
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+    public boolean find(int data){
+        if(head == null) return false;
+        ListNode current = head;
+        while(current != null){
+            if(current.data == data){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
         /*singly.head = new ListNode(10);
@@ -65,5 +91,14 @@ public class SinglyLinkedList {
         System.out.println("Inserting the List node at the beginning");
         singly.display();
         System.out.println("length of the List = "+ singly.length());
+
+        singly.insertLast(90);
+        singly.insertLast(92);
+        System.out.println("Inserting the ListNode at last");
+        singly.display();
+        System.out.println("length of the List = "+ singly.length());
+
+        System.out.println("element 92 is "+ ( singly.find(92) ? "Found" : "Not Found"));
+        System.out.println("element 2 is "+ ( singly.find(2) ? "found" : "not found"));
     }
 }
