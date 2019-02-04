@@ -81,6 +81,30 @@ public class SinglyLinkedList {
         }
         return slowPointer;
     }
+
+    public ListNode findNthNodeFromLast(int n){
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
+        if(n<=0){
+            System.out.println("Invalid value: n"+ n);
+            return null;
+        }
+        while(count < n){
+            if(refPtr == null){
+                System.out.println(n + " is greater the number of elements in list");
+                return null;
+            }
+            refPtr = refPtr.next;
+            count++;
+        }
+        while(refPtr != null){
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+        return mainPtr;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
         /*singly.head = new ListNode(10);
@@ -115,5 +139,11 @@ public class SinglyLinkedList {
 
         ListNode middleNode = singly.findMiddle();
         System.out.println("The element is "+(middleNode == null ? "not found" : middleNode.data));
+
+        ListNode nthNodeFromLast = singly.findNthNodeFromLast(3);
+        if(nthNodeFromLast != null){
+            System.out.println("The element from the last is "+ nthNodeFromLast.data);
+        }
+
     }
 }
