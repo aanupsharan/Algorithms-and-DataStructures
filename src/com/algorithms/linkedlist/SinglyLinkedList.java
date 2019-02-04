@@ -119,6 +119,26 @@ public class SinglyLinkedList {
         }
     }
 
+    public void insertInSortingOrder(int value){
+        ListNode newNode = new ListNode(value);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+
+        ListNode current = head;
+        ListNode temp = null;
+        while(current != null && current.data < newNode.data){
+            temp = current;
+            current = current.next;
+        }
+        newNode.next = current;
+        if(current == head)
+            head = newNode;
+        else
+            temp.next = newNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
         /*singly.head = new ListNode(10);
@@ -177,5 +197,14 @@ public class SinglyLinkedList {
         System.out.println("----- Removing the duplicates from sorted linked list and print -----");
         singly1.removeDuplicates();
         singly1.display();
+
+        System.out.println("----- Inserting the nodes in the Sorting Order -----");
+        singly1.insertInSortingOrder(3);
+        singly1.insertInSortingOrder(18);
+        singly1.insertInSortingOrder(15);
+        singly1.insertInSortingOrder(1);
+        singly1.display();
+
+
     }
 }
