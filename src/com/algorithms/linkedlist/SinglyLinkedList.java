@@ -119,6 +119,7 @@ public class SinglyLinkedList {
         }
     }
 
+    //Inserting the node in the sorted order in Singly Linked List.
     public void insertInSortingOrder(int value){
         ListNode newNode = new ListNode(value);
         if(head == null){
@@ -139,6 +140,22 @@ public class SinglyLinkedList {
             temp.next = newNode;
     }
 
+    //removing the particular key in the linked list
+    public void remove(int key){
+        ListNode current = head;
+        ListNode previous = null;
+        if(current != null && current.data == key){
+            head = current.next;
+            return;
+        }
+        while(current != null && current.data != key){
+            previous = current;
+            current = current.next;
+        }
+        if(current == null) return;
+        previous.next = current.next;
+    }
+    
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
         /*singly.head = new ListNode(10);
@@ -205,6 +222,8 @@ public class SinglyLinkedList {
         singly1.insertInSortingOrder(1);
         singly1.display();
 
-
+        System.out.println("----- Removing the node for Linked List -----");
+        singly1.remove(1);
+        singly1.display();
     }
 }
