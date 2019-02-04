@@ -57,6 +57,7 @@ public class SinglyLinkedList {
         current.next = newNode;
     }
 
+    //searching particular key is available or not in the LinkedList.
     public boolean find(int data){
         if(head == null) return false;
         ListNode current = head;
@@ -69,6 +70,17 @@ public class SinglyLinkedList {
         return false;
     }
 
+    //finding the middle of the node of LinkedList
+    public ListNode findMiddle(){
+        if(head == null) return null;
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+        while(fastPointer != null && fastPointer.next != null){
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+        }
+        return slowPointer;
+    }
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
         /*singly.head = new ListNode(10);
@@ -100,5 +112,8 @@ public class SinglyLinkedList {
 
         System.out.println("element 92 is "+ ( singly.find(92) ? "Found" : "Not Found"));
         System.out.println("element 2 is "+ ( singly.find(2) ? "found" : "not found"));
+
+        ListNode middleNode = singly.findMiddle();
+        System.out.println("The element is "+(middleNode == null ? "not found" : middleNode.data));
     }
 }
