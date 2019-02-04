@@ -70,7 +70,7 @@ public class SinglyLinkedList {
         return false;
     }
 
-    //finding the middle of the node of LinkedList
+    //finding the middle of the node of LinkedList.
     public ListNode findMiddle(){
         if(head == null) return null;
         ListNode slowPointer = head;
@@ -82,6 +82,7 @@ public class SinglyLinkedList {
         return slowPointer;
     }
 
+    //Returning the nth node from last of the LinkedList.
     public ListNode findNthNodeFromLast(int n){
         ListNode mainPtr = head;
         ListNode refPtr = head;
@@ -103,6 +104,19 @@ public class SinglyLinkedList {
             mainPtr = mainPtr.next;
         }
         return mainPtr;
+    }
+
+    //Removing the duplicate elements from the SortedLinked List
+    public void removeDuplicates(){
+        if(head == null) return;
+        ListNode current = head;
+        while(current != null && current.next != null){
+            if(current.data == current.next.data){
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -145,5 +159,23 @@ public class SinglyLinkedList {
             System.out.println("The element from the last is "+ nthNodeFromLast.data);
         }
 
+        //Creating the sorted linked list
+        SinglyLinkedList singly1 = new SinglyLinkedList();
+        singly1.insertLast(10);
+        singly1.insertLast(10);
+        singly1.insertLast(10);
+        singly1.insertLast(11);
+        singly1.insertLast(12);
+        singly1.insertLast(12);
+        singly1.insertLast(13);
+        singly1.insertLast(13);
+        singly1.insertLast(13);
+
+        //Printing the sorted elements
+        System.out.println("----- Printing the list -----");
+        singly1.display();
+        System.out.println("----- Removing the duplicates from sorted linked list and print -----");
+        singly1.removeDuplicates();
+        singly1.display();
     }
 }
