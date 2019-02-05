@@ -155,7 +155,20 @@ public class SinglyLinkedList {
         if(current == null) return;
         previous.next = current.next;
     }
-    
+
+    //reversing the linked list
+    public void reverse(){
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
+        while(current != null){
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        head = previous;
+    }
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
         /*singly.head = new ListNode(10);
@@ -191,6 +204,10 @@ public class SinglyLinkedList {
         ListNode middleNode = singly.findMiddle();
         System.out.println("The element is "+(middleNode == null ? "not found" : middleNode.data));
 
+        singly.reverse();
+        System.out.println("Reversing the Linked List");
+        singly.display();
+        
         ListNode nthNodeFromLast = singly.findNthNodeFromLast(3);
         if(nthNodeFromLast != null){
             System.out.println("The element from the last is "+ nthNodeFromLast.data);
