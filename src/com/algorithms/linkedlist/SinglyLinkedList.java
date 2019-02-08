@@ -169,6 +169,21 @@ public class SinglyLinkedList {
         }
         head = previous;
     }
+
+    //Finding the loop in Singly Linked list
+    public boolean findLoop() {
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
+        while(fastPtr != null && fastPtr.next != null){
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+            if(slowPtr == fastPtr){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList singly = new SinglyLinkedList();
         /*singly.head = new ListNode(10);
@@ -242,5 +257,24 @@ public class SinglyLinkedList {
         System.out.println("----- Removing the node for Linked List -----");
         singly1.remove(1);
         singly1.display();
+
+        //Test Data for the Singly Linked List
+        SinglyLinkedList singly3= new SinglyLinkedList();
+        singly3.head = new ListNode(10);
+        ListNode secondNode = new ListNode(1);
+        ListNode thirdNode = new ListNode(8);
+        ListNode fourthNode = new ListNode(15);
+        ListNode fifthNode = new ListNode(16);
+        ListNode sixthNode = new ListNode(17);
+
+        singly3.head.next = secondNode;
+        secondNode.next = thirdNode;
+        thirdNode.next = fourthNode;
+        fourthNode.next = fifthNode;
+        fifthNode.next = sixthNode;
+        sixthNode.next = null;
+
+        System.out.println("--- Finding the Loop in the Singly Linked List ---");
+        System.out.println(singly3.findLoop()?"We found the loop":"We do not have loop");
     }
 }
