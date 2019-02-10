@@ -27,7 +27,7 @@ public class CircularSinglyLinkedList {
         return length == 0;// We can do the implementation as last == null
     }
 
-    public void createCircularLinkedList(){
+    public void createCircularLinkedList() {
         ListNode first = new ListNode(1);
         ListNode second = new ListNode(2);
         ListNode third = new ListNode(3);
@@ -42,8 +42,23 @@ public class CircularSinglyLinkedList {
         length = 4;
     }
 
+    public void display() {
+        if(last == null){
+            return;
+        }
+
+        ListNode first = last.next;
+        while(first != last){
+            System.out.print(first.data+" --> ");
+            first = first.next;
+        }
+        System.out.println(first.data);
+    }
+
     public static void main(String[] args){
         CircularSinglyLinkedList clink = new CircularSinglyLinkedList();
         clink.createCircularLinkedList();
+        System.out.println("-- Printing the circular linked list --");
+        clink.display();
     }
 }
