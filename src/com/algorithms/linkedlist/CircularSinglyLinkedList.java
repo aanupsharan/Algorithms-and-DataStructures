@@ -82,6 +82,23 @@ public class CircularSinglyLinkedList {
         length++;
     }
 
+    //deleting the first node in the Linked List
+    public void delete(){
+        if(isEmpty()){
+            System.out.println("The Linked list is empty");
+            return;
+        }
+
+        ListNode current = last.next;
+        if(current != last){
+            last.next = current.next;
+        } else {
+            last = null;
+        }
+
+        current.next = null;
+        length--;
+    }
     public static void main(String[] args){
         CircularSinglyLinkedList clink = new CircularSinglyLinkedList();
         //clink.createCircularLinkedList();
@@ -96,6 +113,10 @@ public class CircularSinglyLinkedList {
         clink.insertAtEnd(4);
 
         System.out.println("-- Printing the circular linked list --");
+        clink.display();
+
+        clink.delete();
+        System.out.println("-- Printing after deleting linked list --");
         clink.display();
     }
 }
