@@ -28,4 +28,8 @@ public class DoublyLinkedList {
     public int length(){
         return length;
     }
+
+    public static void main(String[] args){
+
+    }
 }
