@@ -67,14 +67,33 @@ public class CircularSinglyLinkedList {
         last.next = current;
         length++;
     }
-    
+
+    //Inserting the node at the end of Circular Linked List
+    public void insertAtEnd(int data){
+        ListNode current = new ListNode(data);
+        if(last != null){
+            current.next = last.next;
+            last.next = current;
+            last = current;
+        } else {
+            last = current;
+            last.next = last;
+        }
+        length++;
+    }
+
     public static void main(String[] args){
         CircularSinglyLinkedList clink = new CircularSinglyLinkedList();
         //clink.createCircularLinkedList();
-        clink.insertAtStart(1);
+        /*clink.insertAtStart(1);
         clink.insertAtStart(2);
         clink.insertAtStart(3);
-        clink.insertAtStart(4);
+        clink.insertAtStart(4);*/
+
+        clink.insertAtEnd(1);
+        clink.insertAtEnd(2);
+        clink.insertAtEnd(3);
+        clink.insertAtEnd(4);
 
         System.out.println("-- Printing the circular linked list --");
         clink.display();
