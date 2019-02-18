@@ -35,7 +35,7 @@ public class Stack {
         if(isEmpty()){
             throw new EmptyStackException();
         }
-        return length;
+        return top.data;
     }
 
     public void push(int element){
@@ -54,5 +54,34 @@ public class Stack {
         top = top.next;
         length--;
         return result;
+    }
+
+    public void printStack(){
+        if(isEmpty())
+            throw new EmptyStackException();
+        ListNode temp = top;
+        while(temp!=null){
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args){
+        Stack stack = new Stack();
+        stack.push(12);
+        stack.push(13);
+        stack.push(14);
+        System.out.println("top of the element :: "+stack.peek());
+        stack.push(15);
+        stack.push(16);
+        stack.push(17);
+        System.out.println("top of the element :: "+stack.peek());
+        stack.printStack();
+
+        stack.pop();
+        stack.pop();
+        System.out.println("top of the element :: "+stack.peek());
+        stack.printStack();
+
     }
 }
