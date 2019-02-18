@@ -49,23 +49,24 @@ public class Array {
         return a;
     }
 
+    public void printArray(int[] num){
+        for(int i : num){
+            System.out.println(i+" ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args){
         Array arr = new Array();
         int[] a ={5,3,2,1,6};
         System.out.println("Minimum element in the array is "+arr.minumum(a));
         System.out.println("Elememts in array a:");
-        for(int i : a){
-            System.out.print(i+" ");
-        }
-        System.out.println();
+        arr.printArray(a);
 
         System.out.println("Reversed elememts in array a:");
         int[] b = arr.reverse(a,0, a.length-1);
         if(b != null){
-            for(int i : b){
-                System.out.print(i+" ");
-            }
-            System.out.println();
+            arr.printArray(b);
         }
     }
 }
