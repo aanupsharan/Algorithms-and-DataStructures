@@ -29,7 +29,35 @@ public class Queue {
         return front == rear;
     }
 
+    public void enqueue(int data){
+        ListNode current = new ListNode(data);
+        if(isEmpty()){
+            front = current;
+        } else {
+            rear.next = current;
+        }
+        rear = current;
+        length++;
+    }
+
+    public void printQueue(){
+        if(isEmpty())
+            System.out.println("Queue is empty... ");
+        ListNode current = front;
+        while(current != null){
+            System.out.print(current.data+" ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args){
+        Queue queue = new Queue();
+        queue.enqueue(5);
+        queue.enqueue(6);
+        queue.enqueue(7);
+        queue.enqueue(8);
+        queue.printQueue();
 
     }
 }

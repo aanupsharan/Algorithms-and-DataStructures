@@ -1,7 +1,6 @@
 package com.algorithms.stack;
 
 import java.util.EmptyStackException;
-import java.util.List;
 
 public class Stack {
     private ListNode top;
