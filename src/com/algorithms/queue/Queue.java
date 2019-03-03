@@ -26,7 +26,7 @@ public class Queue {
     }
 
     public boolean isEmpty(){
-        return front == rear;
+        return front == null && rear == null;
     }
 
     public void enqueue(int data){
@@ -40,9 +40,25 @@ public class Queue {
         length++;
     }
 
+    public int dequeue(){
+        if(isEmpty()){
+            System.out.println("Queue is empty...");
+            return 0;
+        }
+        int result = front.data;
+        front = front.next;
+        if(front == null){
+            rear = null;
+        }
+        length--;
+        return result;
+    }
+
     public void printQueue(){
-        if(isEmpty())
+        if(isEmpty()) {
             System.out.println("Queue is empty... ");
+            return;
+        }
         ListNode current = front;
         while(current != null){
             System.out.print(current.data+" ");
@@ -57,6 +73,14 @@ public class Queue {
         queue.enqueue(6);
         queue.enqueue(7);
         queue.enqueue(8);
+
+        queue.printQueue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+
         queue.printQueue();
 
     }
