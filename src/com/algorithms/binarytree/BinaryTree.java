@@ -29,6 +29,15 @@ public class BinaryTree {
         preOrder(root.right);
     }
 
+    public void inOrder(TreeNode root){
+        if(root == null){
+            return;
+        }
+        inOrder(root.left);
+        System.out.print(root.data+" ");
+        inOrder(root.right);
+    }
+
     TreeNode insertRec(TreeNode root, int data){
         if(root == null){
             root = new TreeNode(data);
@@ -56,7 +65,11 @@ public class BinaryTree {
         binTree.insert(14);
         binTree.insert(13);
 
-        System.out.println("---- preorder traversal of the tree ----");
+        System.out.println("---- Preorder traversal of the tree ----");
         binTree.preOrder(binTree.root);
+        System.out.println();
+
+        System.out.println("---- Inorder traversal of the tree ----");
+        binTree.inOrder(binTree.root);
     }
 }
