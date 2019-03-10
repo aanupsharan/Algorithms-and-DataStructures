@@ -1,5 +1,7 @@
 package com.algorithms.binarytree;
 
+import java.util.Stack;
+
 public class BinaryTree {
 
     private TreeNode root;
@@ -27,6 +29,24 @@ public class BinaryTree {
         System.out.print(root.data+" ");
         preOrder(root.left);
         preOrder(root.right);
+    }
+
+    public void iterativePreOrder() {
+        if(root == null)
+            return;
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode current = stack.pop();
+            System.out.print(current.data+" ");
+            if(current.right != null){
+                stack.push(current.right);
+            }
+            if(current.left != null) {
+                stack.push(current.left);
+            }
+        }
     }
 
     public void inOrder(TreeNode root){
@@ -80,8 +100,16 @@ public class BinaryTree {
 
         System.out.println("---- Inorder traversal of the tree ----");
         binTree.inOrder(binTree.root);
+        System.out.println();
+
 
         System.out.println("---- Postorder traversal of the tree ----");
         binTree.postOrder(binTree.root);
+        System.out.println();
+
+        System.out.println("---- Iterative Preorder traversal of the tree ----");
+        binTree.iterativePreOrder();
+        System.out.println();
+
     }
 }
